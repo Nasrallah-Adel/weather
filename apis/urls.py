@@ -10,5 +10,6 @@ urlpatterns = [
 
     path('register/', CreateUser.as_view(), name='register'),
     path('login/', views.ObtainAuthToken.as_view(), name='login'),
+    path('weather/<str:city>/', Weather.as_view(), name='weather'),
 
 ]

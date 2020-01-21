@@ -142,3 +142,6 @@ STATICFILES_DIRS = (
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+WEATHER_API_BASE_URL = "http://api.weatherstack.com/current"
+# in real production put this access key to .env file and not push it to github
+WEATHER_API_ACCESS_KEY = "30097b3a1943c883e7613320202098a9"
