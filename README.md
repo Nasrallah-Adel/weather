@@ -47,7 +47,8 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
                "username": "string",
                "token": "string"
              }
-       ```
+        ```
+       
 2. ``POST : 127.0.0.1:8000/apis/login`` this login endpoint to authenticate exist user 
 
      - POST data of user in this format 
