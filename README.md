@@ -29,7 +29,7 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
 *your project will run on ``127.0.0.1:8000``*
 #project Documentation
   - ## API Documentation
-  #######Note For postman URL : [PostMan Collection URL](https://www.getpostman.com/collections/5fd6aa6843677e8ffaea) . File json :[Postman Json File]()
+  #######Note For postman URL : [PostMan Collection URL](https://www.getpostman.com/collections/5fd6aa6843677e8ffaea) . File json :[Postman Json File](https://github.com/Nasrallah-Adel/weather/blob/master/Weather.postman_collection.json)
  have three url in Api app 
 1. ``POST : 127.0.0.1:8000/apis/register`` this register endpoint to create new user 
 
