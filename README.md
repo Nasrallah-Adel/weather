@@ -34,46 +34,51 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
  
  1. ``POST : 127.0.0.1:8000/apis/register`` this register endpoint to create new user 
 
-         - POST data of user in this format 
-                ```json
+       - POST data of user in this format 
+         
+            ```json
                 {  
                    "username": "string",
                    "password": "string"
                 }
-                ````
-         - you will receive Response in this format
-               ```json
+            ````
+       - you will receive Response in this format
+         
+            ```json
                      {
                        "id": int,
                        "username": "string",
                        "token": "string"
                      }
-                ```
+            ```
        
  2. ``POST : 127.0.0.1:8000/apis/login`` this login endpoint to authenticate exist user 
 
-         - POST data of user in this format 
-              ```json
+       - POST data of user in this format 
+         
+            ```json
              {  
                "username": "string",
                "password": "string"
              }
-             ````
+            ````
          - you will receive Response in this format
-           ```json
+         
+            ```json
              {
                 "token": "string"
              }
-           ```
+            ```
            you will use this token to can invoke ``127.0.0.1:8000/apis/weather/:city`` API endpoint
        
  3. ``GET 127.0.0.1:8000/apis/weather/{city}/`` this WEATHER endpoint to retrieve weather data for specific city 
     
-         - example
+       - example
          
            - Use GET method to call ``127.0.0.1:8000/apis/weather/cairo/`` but you need add to request header
             ``Authorization: TOKEN <your token from login or register>`` to allow just auth user to call api
             - if you write good city name ( cairo ) you will receive this response
+            
                 ```json
                       {
                           "location_name": "Cairo",
@@ -91,6 +96,7 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
                 ```
              
                 - if you write bad city name you will get error response
+                
                 ```json
                       {
                          "error_type": "request_failed",
