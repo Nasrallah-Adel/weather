@@ -31,7 +31,8 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
   - ## API Documentation
   #######Note For postman URL : [PostMan Collection URL](https://www.getpostman.com/collections/5fd6aa6843677e8ffaea) . File json :[Postman Json File](https://github.com/Nasrallah-Adel/weather/blob/master/Weather.postman_collection.json)
  have three url in Api app 
-1. ``POST : 127.0.0.1:8000/apis/register`` this register endpoint to create new user 
+ 
+ 1. ``POST : 127.0.0.1:8000/apis/register`` this register endpoint to create new user 
 
          - POST data of user in this format 
                 ```json
@@ -49,7 +50,7 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
                      }
                 ```
        
-2. ``POST : 127.0.0.1:8000/apis/login`` this login endpoint to authenticate exist user 
+ 2. ``POST : 127.0.0.1:8000/apis/login`` this login endpoint to authenticate exist user 
 
          - POST data of user in this format 
               ```json
@@ -66,7 +67,7 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
            ```
            you will use this token to can invoke ``127.0.0.1:8000/apis/weather/:city`` API endpoint
        
-3. ``GET 127.0.0.1:8000/apis/weather/{city}/`` this WEATHER endpoint to retrieve weather data for specific city 
+ 3. ``GET 127.0.0.1:8000/apis/weather/{city}/`` this WEATHER endpoint to retrieve weather data for specific city 
     
          - example
          
