@@ -37,14 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_swagger',
     'apps.apis',
+    'rest_framework_swagger',
     'apps.weather_ui',
 
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -60,6 +61,7 @@ SWAGGER_SETTINGS = {
             'name': 'Authorization',
         },
     },
+    "exclude_namespaces": ["weather"],
 }
 
 MIDDLEWARE = [
@@ -140,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, STATIC_URL),
+    os.path.join(BASE_DIR, "statics"),
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

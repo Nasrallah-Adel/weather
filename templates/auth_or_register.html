@@ -1,18 +1,30 @@
 {% load static %}
+{% load rest_framework %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% if user.is_authenticated %}
+        already Logined
+        <script type="text/javascript">
+
+            window.location.replace('{% url 'weather:weather-ui' %}');
+        </script>
+
+
+    {% endif %}
     <link rel="stylesheet" href="{% static 'user/style.css' %}">
 
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>Register</title>
 </head>
 <body>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Form</title>
+    <title>SignUp Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
@@ -32,27 +44,42 @@
 <body>
 <!-- main -->
 <div class="main-w3layouts wrapper">
-    <h1>SignUp Form</h1>
+    {% if type == 'register' %}
+        <h1>SignUp Form</h1>
+    {% elif type == 'login' %}
+        <h1>Login Form</h1>
+    {% endif %}
     <div class="main-agileinfo">
         <div class="agileits-top">
-            <form action="#" method="post">
-                <input class="text" type="text" name="Username" placeholder="Username" required="">
+            <form action="{% if type == 'register' %}{% url 'weather:register' %}{% elif type == 'login' %}
+{% url 'weather:login' %}{% endif %}"
+                  method="post">
 
-                <input class="text" type="password" name="password" placeholder="Password" required="">
-
+                {% csrf_token %}
+                {% render_form form %}
                 <div class="wthree-text">
 
                     <div class="clear"></div>
                 </div>
-                <input type="submit" value="LOGIN">
+                {% if type == 'register' %}
+                    <input type="submit" value="SIGNUP">
+                {% elif type == 'login' %}
+                    <input type="submit" value="LOGIN">
+                {% endif %}
+
             </form>
-            <p>Don't have an Account? <a href="#"> Register Now!</a></p>
+            {% if type == 'register' %}
+                <p>have an Account? <a href="{% url 'weather:login' %}"> Login Now!</a></p>
+            {% elif type == 'login' %}
+                <p>Do not have an Account? <a href="{% url 'weather:register' %}"> Sign Up Now!</a></p>
+            {% endif %}
+
         </div>
     </div>
     <!-- copyright -->
     <div class="colorlibcopy-agile">
         <p>© 2020 Nasrallah Adel Nasrallah <a href="https://github.com/Nasrallah-Adel"
-                                                                          target="_blank">github</a>
+                                              target="_blank">github</a>
         </p>
     </div>
 

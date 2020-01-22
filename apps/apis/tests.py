@@ -3,10 +3,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.reverse import reverse
-from rest_framework.test import APITestCase, APIRequestFactory
-
-from apis.views import Weather
-from weather.settings import WEATHER_API_BASE_URL, WEATHER_API_ACCESS_KEY
+from rest_framework.test import APITestCase
+from apps.apis.views import Weather
 
 UserModel = get_user_model()
 
@@ -15,7 +13,7 @@ class AccountsTest(APITestCase):
     def setUp(self):
         self.test_user = UserModel.objects.create_user('nasrallah', '12345678')
 
-        self.create_url = reverse('api:register')
+        self.create_url = reverse('apis:register')
 
         self.token = Token.objects.create(user=self.test_user)
 
@@ -76,14 +74,14 @@ class WeatherTest(APITestCase):
     def setUp(self):
         self.test_user = UserModel.objects.create_user('nasrallah', '12345678')
 
-        self.create_url = reverse('api:register')
+        self.create_url = reverse('apis:register')
 
         self.token = Token.objects.create(user=self.test_user)
         self.view = Weather.as_view()
         self.client.credentials(HTTP_AUTHORIZATION='TOKEN {}'.format(self.token))
 
     def get_weather_url(self, city):
-        weather_url = reverse('api:weather', kwargs={'city': city})
+        weather_url = reverse('apis:weather', kwargs={'city': city})
         return weather_url
 
     def test_weather_data_true(self):

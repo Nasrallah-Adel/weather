@@ -2,10 +2,10 @@ from django.urls import path, include
 from rest_framework.authtoken import views
 from rest_framework_swagger.views import get_swagger_view
 
-from apis.views import *
+from apps.apis.views import *
 
 app_name = 'apis'
-schema_view = get_swagger_view(title='apis')
+
 urlpatterns = [
 
     path('register/', CreateUser.as_view(), name='register'),
@@ -13,3 +13,4 @@ urlpatterns = [
     path('weather/<str:city>/', Weather.as_view(), name='weather'),
 
 ]
+
