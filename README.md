@@ -33,69 +33,69 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
  have three url in Api app 
 1. ``POST : 127.0.0.1:8000/apis/register`` this register endpoint to create new user 
 
-     - POST data of user in this format 
-        ```json
-        {  
-           "username": "string",
-           "password": "string"
-        }
-        ````
-     - you will receive Response in this format
-       ```json
-             {
-               "id": int,
-               "username": "string",
-               "token": "string"
-             }
-        ```
+         - POST data of user in this format 
+                ```json
+                {  
+                   "username": "string",
+                   "password": "string"
+                }
+                ````
+         - you will receive Response in this format
+               ```json
+                     {
+                       "id": int,
+                       "username": "string",
+                       "token": "string"
+                     }
+                ```
        
 2. ``POST : 127.0.0.1:8000/apis/login`` this login endpoint to authenticate exist user 
 
-     - POST data of user in this format 
-          ```json
-         {  
-           "username": "string",
-           "password": "string"
-         }
-         ````
-     - you will receive Response in this format
-       ```json
-         {
-            "token": "string"
-         }
-       ```
-       you will use this token to can invoke ``127.0.0.1:8000/apis/weather/:city`` API endpoint
+         - POST data of user in this format 
+              ```json
+             {  
+               "username": "string",
+               "password": "string"
+             }
+             ````
+         - you will receive Response in this format
+           ```json
+             {
+                "token": "string"
+             }
+           ```
+           you will use this token to can invoke ``127.0.0.1:8000/apis/weather/:city`` API endpoint
        
 3. ``GET 127.0.0.1:8000/apis/weather/{city}/`` this WEATHER endpoint to retrieve weather data for specific city 
     
-     - example
-     
-       - Use GET method to call ``127.0.0.1:8000/apis/weather/cairo/`` but you need add to request header
-        ``Authorization: TOKEN <your token from login or register>`` to allow just auth user to call api
-        - if you write good city name ( cairo ) you will receive this response
-            ```json
-                  {
-                      "location_name": "Cairo",
-                      "location_country": "Egypt",
-                      "location_region": "Al Qahirah",
-                      "location_timezone": "Africa/Cairo",
-                      "location_temperature": 16,
-                      "location_weather_icons": [
-                        "https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
-                      ],
-                      "location_weather_descriptions": [
-                        "Partly cloudy"
-                      ]
-                  }
-            ```
+         - example
          
-            - if you write bad city name you will get error response
-            ```json
-                  {
-                     "error_type": "request_failed",
-                     "error_info": "Your API request failed. Please try again or contact support."
-                  } 
-            ```
+           - Use GET method to call ``127.0.0.1:8000/apis/weather/cairo/`` but you need add to request header
+            ``Authorization: TOKEN <your token from login or register>`` to allow just auth user to call api
+            - if you write good city name ( cairo ) you will receive this response
+                ```json
+                      {
+                          "location_name": "Cairo",
+                          "location_country": "Egypt",
+                          "location_region": "Al Qahirah",
+                          "location_timezone": "Africa/Cairo",
+                          "location_temperature": 16,
+                          "location_weather_icons": [
+                            "https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+                          ],
+                          "location_weather_descriptions": [
+                            "Partly cloudy"
+                          ]
+                      }
+                ```
+             
+                - if you write bad city name you will get error response
+                ```json
+                      {
+                         "error_type": "request_failed",
+                         "error_info": "Your API request failed. Please try again or contact support."
+                      } 
+                ```
           
   - ## interface Documentation
   
