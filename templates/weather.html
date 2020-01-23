@@ -1,128 +1,100 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{% static 'user/style.css' %}">
-
-    <meta charset="UTF-8">
-    <title>Weather</title>
-</head>
-<body>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SignUp Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-
-    {#<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />#}
+{% extends 'base.html' %}
 
 
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-    <!-- //web font -->
-</head>
-<body>
-<!-- main -->
-
-<div class="main-w3layouts wrapper">
-    <h1>Weather with city name </h1>
-    <div class="main-agileinfo">
-        <div class="agileits-top">
-            <form action="{% url 'weather:weather-ui' %}" method="post">
-                {% csrf_token %}
-                <input class="text" type="text" name="city" placeholder="City" required="">
+{% block content %}
 
 
-                <div class="wthree-text">
-
-                    <div class="clear"></div>
-                </div>
-                <input type="submit" value="Get Weather">
-                <a href="{% url 'weather:logout' %}">LOGOUT</a>
-            </form>
-
-        </div>
-    </div>
-    {% if type != 'weather-get' %}
-
+    <div class="main-w3layouts wrapper">
+        <h1>Weather with city name </h1>
         <div class="main-agileinfo">
             <div class="agileits-top">
-                <h1>Data</h1>
-                {% if error_type %}
-                    <table>
-                        <tr>
-                            <td>error_type</td>
-                            <th>{{ error_type }}</th>
+                <form action="{% url 'weather:weather-ui' %}" method="post">
+                    {% csrf_token %}
+                    <input class="text" type="text" name="city" placeholder="City" required="">
 
-                        </tr>
 
-                    <tr>
-                            <td>error_info</td>
-                            <th>{{ error_info }}</th>
+                    <div class="wthree-text">
 
-                        </tr>
-                    </table>
-                {% else %}
-                    <table>
-                        <tr>
-                            <td>location_name</td>
-                            <th>{{ location_name }}</th>
+                        <div class="clear"></div>
+                    </div>
+                    <input type="submit" value="Get Weather">
+                    <a href="{% url 'weather:logout' %}">LOGOUT</a>
+                </form>
 
-                        </tr>
-                        <tr>
-                            <td>location_country</td>
-                            <th>{{ location_country }}</th>
-                        </tr>
-                        <tr>
-                            <td>location_region</td>
-                            <th>{{ location_region }}</th>
-                        </tr>
-                        <tr>
-                            <td>location_timezone</td>
-                            <th>{{ location_timezone }}</th>
-                        </tr>
-                        <tr>
-                            <td>location_temperature</td>
-                            <th>{{ location_temperature }}</th>
-                        </tr>
-                        <tr>
-                            <td>location_weather_icons</td>
-
-                            <th>{% for icon in location_weather_icons %}
-                                <img src="{{ icon }}">
-                            {% endfor %}</th>
-                        </tr>
-                        <tr>
-                            <td>location_weather_descriptions</td>
-                            <th>{% for des in location_weather_descriptions %}
-                                {{ des }} ,
-                            {% endfor %}</th>
-                        </tr>
-                    </table>
-                {% endif %}
             </div>
         </div>
-    {% endif %}
-    <!-- copyright -->
-    <div class="colorlibcopy-agile">
-        <p>© 2020 Nasrallah Adel Nasrallah <a href="https://github.com/Nasrallah-Adel"
-                                              target="_blank">github</a>
-        </p>
+        {% if type != 'weather-get' %}
+
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <h1>Data</h1>
+                    {% if error_type %}
+                        <table>
+                            <tr>
+                                <td>error_type</td>
+                                <th>{{ error_type }}</th>
+
+                            </tr>
+
+                            <tr>
+                                <td>error_info</td>
+                                <th>{{ error_info }}</th>
+
+                            </tr>
+                        </table>
+                    {% else %}
+                        <table>
+                            <tr>
+                                <td>location_name</td>
+                                <th>{{ location_name }}</th>
+
+                            </tr>
+                            <tr>
+                                <td>location_country</td>
+                                <th>{{ location_country }}</th>
+                            </tr>
+                            <tr>
+                                <td>location_region</td>
+                                <th>{{ location_region }}</th>
+                            </tr>
+                            <tr>
+                                <td>location_timezone</td>
+                                <th>{{ location_timezone }}</th>
+                            </tr>
+                            <tr>
+                                <td>location_temperature</td>
+                                <th>{{ location_temperature }}</th>
+                            </tr>
+                            <tr>
+                                <td>location_weather_icons</td>
+
+                                <th>{% for icon in location_weather_icons %}
+                                    <img src="{{ icon }}">
+                                {% endfor %}</th>
+                            </tr>
+                            <tr>
+                                <td>location_weather_descriptions</td>
+                                <th>{% for des in location_weather_descriptions %}
+                                    {{ des }} ,
+                                {% endfor %}</th>
+                            </tr>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        <!-- copyright -->
+
+
+
     </div>
+{% endblock %}
+{% block scripts %}
+    {% if not user.is_authenticated %}
+        already Logined
+        <script type="text/javascript">
 
-
-</div>
-
-<!-- //main -->
-</body>
-</html>
-</body>
-</html>
+            window.location.replace('{% url 'weather:login' %}');
+        </script>
+    {% endif %}
+{% endblock %}

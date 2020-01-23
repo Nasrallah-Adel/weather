@@ -1,92 +1,56 @@
-{% load static %}
+{% extends 'base.html' %}
 {% load rest_framework %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% block content %}
+
+
+    <!-- main -->
+    <div class="main-w3layouts wrapper">
+        {% if type == 'register' %}
+            <h1>SignUp Form</h1>
+        {% elif type == 'login' %}
+            <h1>Login Form</h1>
+        {% endif %}
+        <div class="main-agileinfo">
+            <div class="agileits-top">
+                <form action="{% if type == 'register' %}{% url 'weather:register' %}{% elif type == 'login' %}
+{% url 'weather:login' %}{% endif %}"
+                      method="post">
+
+                    {% csrf_token %}
+                    {% render_form form %}
+                    <div class="wthree-text">
+
+                        <div class="clear"></div>
+                    </div>
+                    {% if type == 'register' %}
+                        <input type="submit" value="SIGNUP">
+                    {% elif type == 'login' %}
+                        <input type="submit" value="LOGIN">
+                    {% endif %}
+
+                </form>
+                {% if type == 'register' %}
+                    <p>have an Account? <a href="{% url 'weather:login' %}"> Login Now!</a></p>
+                {% elif type == 'login' %}
+                    <p>Do not have an Account? <a href="{% url 'weather:register' %}"> Sign Up Now!</a></p>
+                {% endif %}
+
+            </div>
+        </div>
+        <!-- copyright -->
+
+
+
+    </div>
+{% endblock %}
+{% block scripts %}
     {% if user.is_authenticated %}
         already Logined
         <script type="text/javascript">
 
             window.location.replace('{% url 'weather:weather-ui' %}');
         </script>
-
-
     {% endif %}
-    <link rel="stylesheet" href="{% static 'user/style.css' %}">
-
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SignUp Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-
-    {#<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />#}
-
-
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-    <!-- //web font -->
-</head>
-<body>
-<!-- main -->
-<div class="main-w3layouts wrapper">
-    {% if type == 'register' %}
-        <h1>SignUp Form</h1>
-    {% elif type == 'login' %}
-        <h1>Login Form</h1>
-    {% endif %}
-    <div class="main-agileinfo">
-        <div class="agileits-top">
-            <form action="{% if type == 'register' %}{% url 'weather:register' %}{% elif type == 'login' %}
-{% url 'weather:login' %}{% endif %}"
-                  method="post">
-
-                {% csrf_token %}
-                {% render_form form %}
-                <div class="wthree-text">
-
-                    <div class="clear"></div>
-                </div>
-                {% if type == 'register' %}
-                    <input type="submit" value="SIGNUP">
-                {% elif type == 'login' %}
-                    <input type="submit" value="LOGIN">
-                {% endif %}
-
-            </form>
-            {% if type == 'register' %}
-                <p>have an Account? <a href="{% url 'weather:login' %}"> Login Now!</a></p>
-            {% elif type == 'login' %}
-                <p>Do not have an Account? <a href="{% url 'weather:register' %}"> Sign Up Now!</a></p>
-            {% endif %}
-
-        </div>
-    </div>
-    <!-- copyright -->
-    <div class="colorlibcopy-agile">
-        <p>© 2020 Nasrallah Adel Nasrallah <a href="https://github.com/Nasrallah-Adel"
-                                              target="_blank">github</a>
-        </p>
-    </div>
-
-
-</div>
-<!-- //main -->
-</body>
-</html>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="{% static 'user/style.css' %}">
+    <meta charset="UTF-8">
+    <title>{{ type }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- //web font -->
+    {% block styles %}
+    {% endblock %}
+</head>
+<body>
+<!-- main -->
+{% block content %}
+
+{% endblock %}
+<div class="colorlibcopy-agile">
+    <p style="color: brown; font-weight: bolder;font-size: large;">© 2020 Nasrallah Adel Nasrallah <a href="https://github.com/Nasrallah-Adel"
+                                         style="color: black" target="_blank">github</a> </p>
+      <p>  <a href="http://nasrallah-adel.github.io/weather"
+                                         style="color: blue; font-weight: bolder;font-size: large;"
+              target="_blank">Project
+          Documentation</a>
+    </p>
+</div>
+<!-- //main -->
+</body>
+
+{% block scripts %}
+    {% if user.is_authenticated %}
+        already Logined
+        <script type="text/javascript">
+
+            window.location.replace('{% url 'weather:weather-ui' %}');
+        </script>
+    {% endif %}
+{% endblock %}
+</html>
