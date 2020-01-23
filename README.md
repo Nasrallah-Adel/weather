@@ -14,7 +14,7 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
     - another interface that allows authenticated users to enter a city and get its weather conditions. 
     
 ## NOTE
-#### I used Django Rest Framework (check link here: https://www.django-rest-framework.org) for API and  even in the interface 
+### I used Django Rest Framework (check link here: https://www.django-rest-framework.org) for API and  even in the interface 
 
 ## *To download and run Project*
 
