@@ -12,7 +12,8 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
 3. Build a simple html interface that:
     - allows the user to login using his credentials and register.
     - another interface that allows authenticated users to enter a city and get its weather conditions. 
-
+# NOTE
+## I used Django Rest Framework (check link here: https://www.django-rest-framework.org) for API and  even in the interface 
 ## *To download and run Project*
 
 1. in your terminal run this command
