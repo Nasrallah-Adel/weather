@@ -26,11 +26,15 @@ By Using the Django Rest Framework (check link here: https://www.django-rest-fra
 4. install project packages to your env by this command
 
    - ``pip install -r requirements.txt``
-5. migrate to database sqlite by command : ```python manage.py migrate```
+5. migrate to database sqlite by command :
+   - ```python manage.py migrate```
+6. If you need run UnitTest For Apis run this command:
+   - ```python manage.py test apps/apis```
 6. run project server by this command
    - ``python manage.py runserver 127.0.0.1:8000``
 
-*your project will run on ``127.0.0.1:8000``*
+   - *your project will run on ``127.0.0.1:8000``*
+   
 #project Documentation
   - ## API Documentation
   #######Note For postman URL : [PostMan Collection URL](https://www.getpostman.com/collections/5fd6aa6843677e8ffaea) . File json :[Postman Json File](https://github.com/Nasrallah-Adel/weather/blob/master/Weather.postman_collection.json)
