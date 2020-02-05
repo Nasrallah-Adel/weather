@@ -1,6 +1,7 @@
 # *weather*
 
-[![Shields.io](https://img.shields.io/badge/Happy-smill-green?style=flat)](http://shields.io/)
+[![Shields.io](https://img.shields.io/badge/Happy-smile-green?style=flat)](http://shields.io/)
+
 By Using the Django Rest Framework (check link here: https://www.django-rest-framework.org), I build a service that
  authenticates a user and displays the temperature of his requested city.
 1. Create simple API endpoints for:
